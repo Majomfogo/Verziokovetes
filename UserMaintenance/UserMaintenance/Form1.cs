@@ -19,6 +19,7 @@ namespace UserMaintenance
         {
             InitializeComponent();
             labelFullname.Text = Resource1.FullName;
+            btnDelete.Text = Resource1.Delete;
             btnSave.Text = Resource1.SaveToFile;
             btnAdd.Text = Resource1.Add;
             listBox1.DataSource = users;
@@ -47,6 +48,17 @@ namespace UserMaintenance
                     sw.Write(s.FullName);
                     sw.WriteLine();
                 }
+        }
+
+        private void BtnDelete_Click(object sender, EventArgs e)
+        {
+            //foreach (var s in users)
+            //{
+                
+            //    if (s.ID==listBox1.SelectedValue)
+            //    {
+            //    }
+            //}
         }
     }
 }

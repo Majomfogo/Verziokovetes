@@ -33,6 +33,7 @@
             this.btnAdd = new System.Windows.Forms.Button();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.btnSave = new System.Windows.Forms.Button();
+            this.btnDelete = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // listBox1
@@ -72,7 +73,7 @@
             // 
             // btnSave
             // 
-            this.btnSave.Location = new System.Drawing.Point(432, 211);
+            this.btnSave.Location = new System.Drawing.Point(432, 263);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(228, 65);
             this.btnSave.TabIndex = 5;
@@ -80,11 +81,22 @@
             this.btnSave.UseVisualStyleBackColor = true;
             this.btnSave.Click += new System.EventHandler(this.BtnSave_Click);
             // 
+            // btnDelete
+            // 
+            this.btnDelete.Location = new System.Drawing.Point(432, 191);
+            this.btnDelete.Name = "btnDelete";
+            this.btnDelete.Size = new System.Drawing.Size(228, 66);
+            this.btnDelete.TabIndex = 6;
+            this.btnDelete.Text = "button1";
+            this.btnDelete.UseVisualStyleBackColor = true;
+            this.btnDelete.Click += new System.EventHandler(this.BtnDelete_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(679, 450);
+            this.Controls.Add(this.btnDelete);
             this.Controls.Add(this.btnSave);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.btnAdd);
@@ -104,6 +116,7 @@
         private System.Windows.Forms.Button btnAdd;
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Button btnSave;
+        private System.Windows.Forms.Button btnDelete;
     }
 }
 

@@ -29,11 +29,10 @@
         private void InitializeComponent()
         {
             this.listBox1 = new System.Windows.Forms.ListBox();
-            this.labelLastname = new System.Windows.Forms.Label();
+            this.labelFullname = new System.Windows.Forms.Label();
             this.btnAdd = new System.Windows.Forms.Button();
             this.textBox1 = new System.Windows.Forms.TextBox();
-            this.labelFirstname = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.btnSave = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // listBox1
@@ -45,14 +44,14 @@
             this.listBox1.Size = new System.Drawing.Size(306, 420);
             this.listBox1.TabIndex = 0;
             // 
-            // labelLastname
+            // labelFullname
             // 
-            this.labelLastname.AutoSize = true;
-            this.labelLastname.Location = new System.Drawing.Point(324, 24);
-            this.labelLastname.Name = "labelLastname";
-            this.labelLastname.Size = new System.Drawing.Size(46, 17);
-            this.labelLastname.TabIndex = 1;
-            this.labelLastname.Text = "label1";
+            this.labelFullname.AutoSize = true;
+            this.labelFullname.Location = new System.Drawing.Point(324, 24);
+            this.labelFullname.Name = "labelFullname";
+            this.labelFullname.Size = new System.Drawing.Size(46, 17);
+            this.labelFullname.TabIndex = 1;
+            this.labelFullname.Text = "label1";
             // 
             // btnAdd
             // 
@@ -71,32 +70,25 @@
             this.textBox1.Size = new System.Drawing.Size(228, 22);
             this.textBox1.TabIndex = 4;
             // 
-            // labelFirstname
+            // btnSave
             // 
-            this.labelFirstname.AutoSize = true;
-            this.labelFirstname.Location = new System.Drawing.Point(324, 61);
-            this.labelFirstname.Name = "labelFirstname";
-            this.labelFirstname.Size = new System.Drawing.Size(46, 17);
-            this.labelFirstname.TabIndex = 5;
-            this.labelFirstname.Text = "label1";
-            // 
-            // textBox2
-            // 
-            this.textBox2.Location = new System.Drawing.Point(432, 58);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(228, 22);
-            this.textBox2.TabIndex = 6;
+            this.btnSave.Location = new System.Drawing.Point(432, 211);
+            this.btnSave.Name = "btnSave";
+            this.btnSave.Size = new System.Drawing.Size(228, 65);
+            this.btnSave.TabIndex = 5;
+            this.btnSave.Text = "button1";
+            this.btnSave.UseVisualStyleBackColor = true;
+            this.btnSave.Click += new System.EventHandler(this.BtnSave_Click);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(679, 450);
-            this.Controls.Add(this.textBox2);
-            this.Controls.Add(this.labelFirstname);
+            this.Controls.Add(this.btnSave);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.btnAdd);
-            this.Controls.Add(this.labelLastname);
+            this.Controls.Add(this.labelFullname);
             this.Controls.Add(this.listBox1);
             this.Name = "Form1";
             this.Text = "Form1";
@@ -108,11 +100,10 @@
         #endregion
 
         private System.Windows.Forms.ListBox listBox1;
-        private System.Windows.Forms.Label labelLastname;
+        private System.Windows.Forms.Label labelFullname;
         private System.Windows.Forms.Button btnAdd;
         private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.Label labelFirstname;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.Button btnSave;
     }
 }
 

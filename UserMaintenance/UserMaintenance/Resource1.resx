@@ -126,4 +126,7 @@
   <data name="LastName" xml:space="preserve">
     <value>Vezetéknév</value>
   </data>
+  <data name="SaveToFile" xml:space="preserve">
+    <value>Fájlbe írás</value>
+  </data>
 </root>

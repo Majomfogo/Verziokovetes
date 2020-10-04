@@ -41,7 +41,7 @@ namespace gyak4_EH515M
             try
             {
                 xlApp = new Excel.Application();
-                xlWB = new Excel.Workbook();
+                xlWB = xlApp.Workbooks.Add(Missing.Value);
                 xlSheet = new Excel.Worksheet();
 
                 CreateTable();

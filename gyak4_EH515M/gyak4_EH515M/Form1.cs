@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using Excel = Microsoft.Office.Interop.Excel;
 using System.Reflection;
 
+
 namespace gyak4_EH515M
 {
 
@@ -42,7 +43,7 @@ namespace gyak4_EH515M
             {
                 xlApp = new Excel.Application();
                 xlWB = xlApp.Workbooks.Add(Missing.Value);
-                xlSheet = new Excel.Worksheet();
+                xlSheet = xlWB.ActiveSheet;
 
                 CreateTable();
 
@@ -120,6 +121,16 @@ namespace gyak4_EH515M
             headerRange.Interior.Color = Color.LightBlue;
             headerRange.BorderAround2(Excel.XlLineStyle.xlContinuous, Excel.XlBorderWeight.xlThick);
 
+            Excel.Range tableRange = xlSheet.get_Range(GetCell(1, 1), GetCell(Flats.Count+1, headers.Length));
+            tableRange.BorderAround2(Excel.XlLineStyle.xlContinuous, Excel.XlBorderWeight.xlThick);
+
+            Excel.Range elsooszlopRange = xlSheet.get_Range(GetCell(2, 1), GetCell(Flats.Count + 1, 1));
+            elsooszlopRange.Font.Bold = true;
+            elsooszlopRange.Interior.Color = Color.LightYellow;
+
+            Excel.Range utolsooszlopRange = xlSheet.get_Range(GetCell(2,9), GetCell(Flats.Count+1, 9));
+            utolsooszlopRange.Interior.Color = Color.LightGreen;
+            utolsooszlopRange.NumberFormat = "0.##";
         }
         private string GetCell(int x, int y)
         {

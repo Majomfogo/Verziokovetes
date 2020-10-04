@@ -38,8 +38,8 @@ namespace gyak4_EH515M
 
         private void CreateExcel()
         {
-        //    try
-        //    {
+            try
+            {
                 xlApp = new Microsoft.Office.Interop.Excel.Application();
                 xlWB = new Microsoft.Office.Interop.Excel.Workbook();
                 xlSheet = new Microsoft.Office.Interop.Excel.Worksheet();
@@ -48,17 +48,17 @@ namespace gyak4_EH515M
 
                 xlApp.Visible = true;
                 xlApp.UserControl = true;
-            //}
-            //catch (Exception ex)
-            //{
-            //    string errMsg = string.Format("Error: {0}\nLine: {1}", ex.Message, ex.Source);
-            //    MessageBox.Show(errMsg, "Error");
-            //    xlWB.Close(false, Type.Missing, Type.Missing);
-            //    xlApp.Quit();
-            //    xlWB = null;
-            //    xlApp = null;
-            //}                                 
         }
+            catch (Exception ex)
+            {
+                string errMsg = string.Format("Error: {0}\nLine: {1}", ex.Message, ex.Source);
+        MessageBox.Show(errMsg, "Error");
+                xlWB.Close(false, Type.Missing, Type.Missing);
+                xlApp.Quit();
+                xlWB = null;
+                xlApp = null;
+            }
+}
 
         private void CreateTable()
         {

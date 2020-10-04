@@ -25,6 +25,6 @@ namespace gyak4_EH515M
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<Flat> Flats { get; set; }
+        public virtual DbSet<Flat> Flat { get; set; }
     }
 }

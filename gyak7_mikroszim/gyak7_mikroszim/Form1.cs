@@ -13,11 +13,16 @@ using System.Windows.Forms;
 
 namespace gyak7_mikroszim
 {
+    
     public partial class Form1 : Form
     {
+        Random random = new Random(1994);
         List<Person> Nepesseg = new List<Person>();
         List<SzulVal> SzuletesVal = new List<SzulVal>();
         List<HalVal> HalalVal = new List<HalVal>();
+
+
+
         public Form1()
         {
             InitializeComponent();
@@ -27,6 +32,24 @@ namespace gyak7_mikroszim
             HalalVal = GetHalVal(@"C:\Temp\halál.csv");
 
             dataGridView1.DataSource = HalalVal;
+
+            for (int year = 2005; year <= 2024; year++)
+            {
+                
+                for (int i = 0; i < Nepesseg.Count; i++)
+                {
+                    // Ide jön a szimulációs lépés
+                }
+
+                int nbrOfMales = (from x in Nepesseg
+                                  where x.Nem == Gender.Ferfi && x.IsAlive
+                                  select x).Count();
+                int nbrOfFemales = (from x in Nepesseg
+                                    where x.Nem == Gender.No && x.IsAlive
+                                    select x).Count();
+                Console.WriteLine(
+                    string.Format("Év:{0} Fiúk:{1} Lányok:{2}", year, nbrOfMales, nbrOfFemales));
+            }
         }
         public List<Person> GetNepesseg(string csvpath)
         {

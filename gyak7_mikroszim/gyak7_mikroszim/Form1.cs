@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -20,22 +21,29 @@ namespace gyak7_mikroszim
         List<Person> Nepesseg = new List<Person>();
         List<SzulVal> SzuletesVal = new List<SzulVal>();
         List<HalVal> HalalVal = new List<HalVal>();
-
+        List<int> ferfiszam = new List<int>();
+        List<int> noszam = new List<int>();
 
 
         public Form1()
         {
             InitializeComponent();
 
-            Nepesseg = GetNepesseg(@"C:\Temp\nép-teszt.csv");
+            
+            
+        }
+
+        private void Simulation()
+        {
+            Nepesseg = GetNepesseg(textBox1.Text);
             SzuletesVal = GetSzulVal(@"C:\Temp\születés.csv");
             HalalVal = GetHalVal(@"C:\Temp\halál.csv");
-
-            dataGridView1.DataSource = HalalVal;
-
-            for (int year = 2005; year <= 2024; year++)
+            ferfiszam.Clear();
+            noszam.Clear();
+            richTextBox1.Clear();
+            for (int year = 2005; year <= numericUpDown1.Value; year++)
             {
-                
+
                 for (int i = 0; i < Nepesseg.Count; i++)
                 {
                     SimStep(year, Nepesseg[i]);
@@ -47,10 +55,36 @@ namespace gyak7_mikroszim
                 int nbrOfFemales = (from x in Nepesseg
                                     where x.Nem == Gender.No && x.IsAlive
                                     select x).Count();
+
+                ferfiszam.Add(nbrOfMales);
+                noszam.Add(nbrOfFemales);
                 Console.WriteLine(
                     string.Format("Év:{0} Fiúk:{1} Lányok:{2}", year, nbrOfMales, nbrOfFemales));
+                
+            }
+            DisplayResults();
+        }
+
+        public void DisplayResults()
+          
+        {
+            string sor1;
+            string sor2;
+            string sor3;
+            int szamolo = 0;
+            for (int i = 2005; i < numericUpDown1.Value; i++)
+            {
+                sor1 = "Szimulációs év: " + i.ToString();
+                sor2 = "Fiúk: " + ferfiszam[szamolo].ToString();
+                sor3 = "Lányok" + noszam[szamolo].ToString();
+
+                richTextBox1.AppendText(sor1 + "\n\t" + sor2 + "\n\t" + sor3 + "\n\n");
+                szamolo++;
+                
+               
             }
         }
+
         public List<Person> GetNepesseg(string csvpath)
         {
             List<Person> population = new List<Person>();
@@ -147,6 +181,21 @@ namespace gyak7_mikroszim
                     Nepesseg.Add(újszülött);
                 }
             }
+        }
+
+        private void btnStart_Click(object sender, EventArgs e)
+        {
+            Simulation();
+        }
+
+        private void btnBrowse_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog ofd = new OpenFileDialog();
+            if (ofd.ShowDialog() != DialogResult.OK) return;
+            
+                textBox1.Text = ofd.FileName;
+            
+            
         }
     }
 }

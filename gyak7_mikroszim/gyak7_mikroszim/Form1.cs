@@ -38,7 +38,7 @@ namespace gyak7_mikroszim
                 
                 for (int i = 0; i < Nepesseg.Count; i++)
                 {
-                    // Ide jön a szimulációs lépés
+                    SimStep(year, Nepesseg[i]);
                 }
 
                 int nbrOfMales = (from x in Nepesseg
@@ -112,6 +112,41 @@ namespace gyak7_mikroszim
             }
 
             return halval;
+        }
+
+        private void SimStep(int year, Person person)
+        {
+            
+            if (!person.IsAlive) return;
+
+            
+            byte age = (byte)(year - person.SzulEv);
+
+            
+            double pDeath = (from x in HalalVal
+                             where x.Nem == person.Nem && x.Kor == age
+                             select x.Valószinu).FirstOrDefault();
+            
+            if (random.NextDouble() <= pDeath)
+                person.IsAlive = false;
+
+            
+            if (person.IsAlive && person.Nem == Gender.No)
+            {
+                
+                double pBirth = (from x in SzuletesVal
+                                 where x.Kor == age
+                                 select x.Valoszinu).FirstOrDefault();
+                
+                if (random.NextDouble() <= pBirth)
+                {
+                    Person újszülött = new Person();
+                    újszülött.SzulEv = year;
+                    újszülött.Gyerekszam = 0;
+                    újszülött.Nem = (Gender)(random.Next(1, 3));
+                    Nepesseg.Add(újszülött);
+                }
+            }
         }
     }
 }

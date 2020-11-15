@@ -7,11 +7,11 @@ using gyak8_EH515M.Abstractions;
 
 namespace gyak8_EH515M.Entities
 {
-    public class BallFactory : IToyFactory
+    public class CarFactory : IToyFactory
     {
         public Toy CreateNew()
         {
-            return new Ball();
+            return new Car();
         }
     }
 }

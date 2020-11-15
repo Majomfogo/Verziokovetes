@@ -5,31 +5,15 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using gyak8_EH515M.Abstractions;
 
 namespace gyak8_EH515M.Entities
 {
-    public class Ball : Label
+    public class Ball : Toy
     {
-        public Ball()
-            {
-            AutoSize = false;
-            Height = 50;
-            Width = 50;
-            Paint += Ball_Paint;
-        }
-
-        protected void DrawImage(Graphics g)
+        protected override void DrawImage(Graphics g)
         {
             g.FillEllipse(new SolidBrush(Color.Blue), 0, 0, Width, Height);
-        }
-        private void Ball_Paint(object sender, PaintEventArgs e)
-        {
-            DrawImage(e.Graphics);
-        }
-
-        public void MoveBall()
-        {
-            Left += 1;
         }
 
     }

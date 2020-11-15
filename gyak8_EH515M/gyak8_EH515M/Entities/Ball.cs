@@ -8,7 +8,7 @@ using System.Windows.Forms;
 
 namespace gyak8_EH515M.Entities
 {
-    class Ball : Label
+    public class Ball : Label
     {
         public Ball()
             {

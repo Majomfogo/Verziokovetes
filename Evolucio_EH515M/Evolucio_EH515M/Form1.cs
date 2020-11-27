@@ -14,6 +14,7 @@ namespace Evolucio_EH515M
     public partial class Form1 : Form
 
     {
+        Brain winnerBrain = null;
         GameController gc = new GameController();
         GameArea ga;
 
@@ -65,7 +66,28 @@ namespace Evolucio_EH515M
                 else
                     gc.AddPlayer(b.Mutate());
             }
+            var winners = from p in topPerformers
+                          where p.IsWinner
+                          select p;
+            if (winners.Count() > 0)
+            {
+                winnerBrain = winners.FirstOrDefault().Brain.Clone();
+                gc.GameOver -= Gc_GameOver;
+                return;
+            }
+
+
+
             gc.Start();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            gc.ResetCurrentLevel();
+            gc.AddPlayer(winnerBrain.Clone());
+            gc.AddPlayer();
+            ga.Focus();
+            gc.Start(true);
         }
     }
 }
